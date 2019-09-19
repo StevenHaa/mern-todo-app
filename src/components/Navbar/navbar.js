@@ -1,10 +1,19 @@
 import React, { Component } from 'react';
+import './navbar.less'
 
 class Navbar extends Component {
   render() {
     return (
-      <div>
-        <h1> Hello from Navbar</h1> 
+      <div className="navbar">
+        <span> LOGO OR SOMETHINGS</span>
+        <ul>
+          <li>
+            Current To-do's
+          </li>
+          <li>
+            Create a To-do
+          </li>
+        </ul>
       </div>
     );
   }

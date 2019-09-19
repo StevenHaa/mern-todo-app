@@ -1,12 +1,18 @@
 import React, { Component } from 'react';
-import './navbar.less'
+import './navbar.scss'
+
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faCoffee } from '@fortawesome/free-solid-svg-icons'
 
 class Navbar extends Component {
   render() {
     return (
-      <div className="navbar">
-        <span> LOGO OR SOMETHINGS</span>
-        <ul>
+      <nav className="navbar">
+        <div className="logo"> 
+          <FontAwesomeIcon icon={faCoffee} className="logo-icon"/>
+          <span className="logo-name"> APP NAME </span>
+        </div>
+        <ul className="links">
           <li>
             Current To-do's
           </li>
@@ -14,7 +20,7 @@ class Navbar extends Component {
             Create a To-do
           </li>
         </ul>
-      </div>
+      </nav>
     );
   }
 }

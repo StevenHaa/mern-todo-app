@@ -1,0 +1,54 @@
+.create-todo-container {
+    width: 80%;
+    margin: 0 auto;
+    
+    input[type=text] {
+        width: 100%;
+        border-radius: 5px;
+        height: 25px;
+        padding-left: 10px;
+        border: none;
+    }
+
+    .priority-radio {
+        // erase native radio css
+        -webkit-appearance: none;
+        -moz-appearance: none;
+        appearance: none;
+        display: inline-block;
+        position: relative;
+        background-color: white;
+        color: #666;
+        height: 15px;
+        width: 15px;
+        border: 0;
+        border-radius: 50px;
+        cursor: pointer;  
+        outline: none;
+        margin-right: 5px;
+    }
+
+    .priority-radio:checked::before
+    {
+         position: absolute;
+         left: 3px;
+         top: 1px;
+         content: '\02143';
+         transform: rotate(40deg);
+    }
+
+    label {
+        margin-right: 5px;
+    }
+
+    .submit-button {
+        margin-top: 15px;
+        width: 100px;
+        height: 35px;
+        background-color: #79B5DC;
+        border-radius: 5px;
+        color: white;
+        font-size: 15px;
+        border: none;
+    }
+}

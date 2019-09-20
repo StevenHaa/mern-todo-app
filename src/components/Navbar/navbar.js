@@ -14,7 +14,7 @@ class Navbar extends Component {
             <span className="logo-name"> APP NAME </span>
           </NavLink>
         </div>
-        <ul className="NavLinks">
+        <ul>
           <li>
             <NavLink exact={true} to="/" activeClassName="selected">Current To-do's</NavLink>
           </li>

@@ -18,7 +18,6 @@
         .logo-name {
             margin-left: 10px; 
         }
-
     }
 
     ul {
@@ -30,5 +29,20 @@
         li {
             padding: 10px;
         }
+    }
+
+    a {
+        color: white;
+        text-decoration: none;
+    }
+    
+    a:hover {
+        color: #CD533B;
+    }
+    
+    // active link
+    .selected {
+        // color: #9A829E;
+        color: #B5687F;
     }
 }

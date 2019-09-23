@@ -25,5 +25,20 @@ router.get('/:todoId', async (req, res) => {
     }
 });
 
+// ADD A NEW TODO
+router.post('/', (async (req, res) => {
+    const todo = new Todo();
+    todo.id = req.body.id;
+    todo.description = req.body.description;
+    todo.priority = req.body.priority;
+    todo.completed = req.body.completed;
+    
+    try {
+        const newTodo = await todo.save();
+        res.json(newTodo);
+    } catch(err) {
+        res.json({ message: err })
+    }
+}))
 
 module.exports = router;

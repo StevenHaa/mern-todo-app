@@ -4,8 +4,15 @@ const router = express.Router();
 // Load Todo model
 const Todo = require('../models/Todo');
 
-router.get('/', (req, res) => {
-    res.send("hello from get")
+
+// GET ALL TODO'S
+router.get('/', async (req, res) => {
+    try {
+        const todos = await Todo.find();
+        res.json(todos);
+    } catch(err) {
+        res.json({ message: err })
+    }
 })
 
 module.exports = router;

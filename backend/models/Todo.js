@@ -2,17 +2,17 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 let TodoSchema = new Schema({
-    id: {
-        type: Number
-    },
     description: {
-        type: String
+        type: String,
+        required: true
     },
     priority: {
-        type: String
+        type: String,
+        required: true
     },
     completed: {
-        type: Boolean
+        type: Boolean,
+        default: 'false'
     }
 })
 

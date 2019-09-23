@@ -41,4 +41,14 @@ router.post('/', (async (req, res) => {
     }
 }))
 
+// DELETE A TODO
+router.delete('/:todoId', async(req, res) => {
+    try {
+        const removeTodo = await Todo.remove({ _id: req.params.todoId });
+        res.json(removeTodo)
+    } catch(err) {
+        res.json({ message: err })
+    }
+})
+
 module.exports = router;

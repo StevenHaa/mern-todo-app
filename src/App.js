@@ -6,31 +6,25 @@ import Navbar from './components/Navbar';
 import Todos from './components/Todos';
 import CreateTodos from './components/CreateTodos';
 
+import axios from 'axios';
+
 class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      tempTodos: [
-        {
-          id: 1,
-          description: "Get out of bed",
-          completed: false,
-          priority: "medium"
-        },
-        {
-          id: 2,
-          description: "Brush Teeth",
-          completed: false,
-          priority: "high"
-        },
-        {
-          id: 3,
-          description: "Each breakfast",
-          completed: false,
-          priority: "low"
-        },
-      ]
+      todos: [],
     };
+  }
+
+  componentDidMount() {
+    axios.get('http://localhost:4000/todos/')
+      .then(response => {
+          const todos = response.data;
+          this.setState({ todos });
+      })
+      .catch(function (error){
+          console.log(error);
+      })
   }
 
   render() {
@@ -50,8 +44,8 @@ class App extends Component {
                   <th>Delete Todo</th>
                 </tr>
               
-                {this.state.tempTodos.map(todo => {
-                  return <Todos todo={todo}/>
+                {this.state.todos.map((todo, index) => {
+                  return <Todos todo={todo} key={index}/>
                 })}
               </table>
             </React.Fragment>

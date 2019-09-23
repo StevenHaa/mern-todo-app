@@ -26,6 +26,21 @@ class App extends Component {
           console.log(error);
       })
   }
+  
+  // this method allows the frontend table to be updated when a new todo task is added without refreshing (ugly solution)
+  updateTable = (todo) => {
+    const newTodo = {
+      description: todo.description,
+      priority: todo.priority,
+      completed: todo.completed
+    }
+
+    this.setState(prevState => {
+      return {
+        todos: [...prevState.todos, newTodo]
+      }
+    })
+  }
 
   render() {
     return (
@@ -50,7 +65,7 @@ class App extends Component {
               </table>
             </React.Fragment>
           )}/>
-          <Route path="/create" component={CreateTodos}></Route>
+          <Route path="/create" render={(props) => <CreateTodos {...props} updateTable={this.updateTable }/>}></Route>
         </div>
       </Router>
     );

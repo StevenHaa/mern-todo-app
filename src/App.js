@@ -29,7 +29,9 @@ class App extends Component {
   
   // this method allows the frontend table to be updated when a new todo task is added without refreshing (ugly solution)
   updateTable = (todo) => {
+    // need the id delete in the future
     const newTodo = {
+      _id: todo._id,
       description: todo.description,
       priority: todo.priority,
       completed: todo.completed
@@ -41,6 +43,18 @@ class App extends Component {
       }
     })
   }
+
+  deleteTodo = (todoId) => {
+    axios.delete(`http://localhost:4000/todos/${todoId}`)
+      .then(() => {
+        // a list of todos without the one to be deleted
+        const newListOfTodos = this.state.todos.filter(todo => todo._id !== todoId);
+        this.setState({
+          todos: newListOfTodos
+        })
+      })
+  }
+  
 
   render() {
     return (
@@ -60,7 +74,7 @@ class App extends Component {
                 </tr>
               
                 {this.state.todos.map((todo, index) => {
-                  return <Todos todo={todo} key={index}/>
+                  return <Todos todo={todo} key={index} deleteTodo={this.deleteTodo}/>
                 })}
               </table>
             </React.Fragment>

@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import './createTodos.scss'
+import './createTodos.scss';
+import axios from 'axios';
 
 class CreateTodos extends Component {
   constructor(props){
@@ -23,6 +24,16 @@ class CreateTodos extends Component {
     console.log(`Form submitted:`);
     console.log(`Todo Description: ${this.state.description}`);
     console.log(`Todo Priority: ${this.state.priority}`);
+
+    const newTodo = {
+      description: this.state.description,
+      priority: this.state.priority,
+      completed: false
+    }
+
+    // add to db
+    axios.post('http://localhost:4000/todos/', newTodo)
+      .then(res => console.log(res.data))
 
     this.setState({
       description: '',

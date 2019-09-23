@@ -15,4 +15,15 @@ router.get('/', async (req, res) => {
     }
 })
 
+// GET A SPECIFIC TODO
+router.get('/:todoId', async (req, res) => {
+    try {
+        let todo = await Todo.findById(req.params.todoId);
+        res.json(todo);
+    } catch(err){
+        res.json({ message: err })
+    }
+});
+
+
 module.exports = router;

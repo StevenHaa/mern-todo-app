@@ -59,17 +59,20 @@ class App extends Component {
           <Route exact path="/" render={props => (
             <React.Fragment>
               <table>
-                <tr>
-                  <th>Description</th>
-                  <th>Priority</th>
-                  <th>Action</th>
-                  <th>Mark Done</th>
-                  <th>Delete Todo</th>
-                </tr>
-              
-                {this.state.todos.map((todo, index) => {
-                  return <Todos todo={todo} key={index} deleteTodo={this.deleteTodo}/>
-                })}
+                <thead>
+                  <tr>
+                    <th>Description</th>
+                    <th>Priority</th>
+                    <th>Action</th>
+                    <th>Mark Done</th>
+                    <th>Delete Todo</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {this.state.todos.map((todo, index) => {
+                    return <Todos todo={todo} key={index} deleteTodo={this.deleteTodo}/>
+                  })}
+                </tbody>
               </table>
             </React.Fragment>
           )}/>

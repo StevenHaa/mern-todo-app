@@ -5,6 +5,7 @@ import { BrowserRouter as Router, Route } from "react-router-dom";
 import Navbar from './components/Navbar';
 import Todos from './components/Todos';
 import CreateTodos from './components/CreateTodos';
+import EditTodos from './components/EditTodos';
 import axios from 'axios';
 
 class App extends Component {
@@ -48,7 +49,7 @@ class App extends Component {
       })
   }
   
-
+  
   render() {
     return (
       <Router>
@@ -73,6 +74,7 @@ class App extends Component {
             </React.Fragment>
           )}/>
           <Route path="/create" render={(props) => <CreateTodos {...props} />}/>
+          <Route path="/edit/:todoId" render={(props) => <EditTodos {...props} />}/>
         </div>
       </Router>
     );

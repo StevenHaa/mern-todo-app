@@ -33,12 +33,14 @@ class CreateTodos extends Component {
 
     // add to db
     axios.post('http://localhost:4000/todos/', newTodo)
-      .then(res => this.props.updateTable(res.data))
 
     this.setState({
       description: '',
       priority: ''
     })
+
+     // redirect back to homepage after update
+     this.props.history.push('/');
   }
 
   render() {

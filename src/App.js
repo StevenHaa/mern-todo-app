@@ -5,7 +5,6 @@ import { BrowserRouter as Router, Route } from "react-router-dom";
 import Navbar from './components/Navbar';
 import Todos from './components/Todos';
 import CreateTodos from './components/CreateTodos';
-
 import axios from 'axios';
 
 class App extends Component {
@@ -26,22 +25,16 @@ class App extends Component {
           console.log(error);
       })
   }
-  
-  // this method allows the frontend table to be updated when a new todo task is added without refreshing (ugly solution)
-  updateTable = (todo) => {
-    // need the id delete in the future
-    const newTodo = {
-      _id: todo._id,
-      description: todo.description,
-      priority: todo.priority,
-      completed: todo.completed
-    }
 
-    this.setState(prevState => {
-      return {
-        todos: [...prevState.todos, newTodo]
-      }
-    })
+  componentDidUpdate() {
+    axios.get('http://localhost:4000/todos/')
+      .then(response => {
+          const todos = response.data;
+          this.setState({ todos });
+      })
+      .catch(function (error){
+          console.log(error);
+      })
   }
 
   deleteTodo = (todoId) => {
@@ -79,7 +72,7 @@ class App extends Component {
               </table>
             </React.Fragment>
           )}/>
-          <Route path="/create" render={(props) => <CreateTodos {...props} updateTable={this.updateTable }/>}></Route>
+          <Route path="/create" render={(props) => <CreateTodos {...props} />}/>
         </div>
       </Router>
     );

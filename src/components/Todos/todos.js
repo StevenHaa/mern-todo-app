@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import './todos.scss'
+import { NavLink } from 'react-router-dom';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faCheckCircle, faTimesCircle } from '@fortawesome/free-solid-svg-icons'
@@ -11,7 +12,7 @@ class Todos extends Component {
       <tr className="todo-task">
         <td> { description } </td>
         <td> { priority.toUpperCase() } </td>
-        <td> Edit </td>
+        <td> <NavLink to={`/edit/${this.props.todo._id}`}>Edit</NavLink> </td>
         <td><FontAwesomeIcon icon={faCheckCircle} className="logo-icon"/></td>
         {/* to be able to pass the id up the hierarchy, we need to bind */}
         <td><FontAwesomeIcon icon={faTimesCircle} className="logo-icon" onClick={this.props.deleteTodo.bind(this, _id)}/></td>
